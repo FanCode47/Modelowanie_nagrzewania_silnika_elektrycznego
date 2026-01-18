@@ -1,0 +1,457 @@
+
+
+
+
+
+
+
+
+
+
+
+
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+\documentclass[10pt, aspectratio=169, t]{beamer}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[european]{circuitikz}
+\usepackage{booktabs}
+
+% Налаштування мов
+\setmainlanguage{polish}
+\setotherlanguage{english}
+
+% Основні пакети
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Użycie motywu Berlin
+\usetheme{Berlin}
+
+% Nagłówek i stopka
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[page number]
+
+\title{Modelowanie nagrzewania silnika elektrycznego z wykorzystaniem równań różniczkowych}
+
+\author{Omeliukh Vitalii (181517) \and Dmytro Pavlyk (181518)}
+\institute{Kierunek: Inżynieria i Analiza Danych}
+\date{\today}
+
+\begin{document}
+	
+	% Slajd tytułowy
+	\begin{frame}
+		\titlepage
+		
+		\vspace{0.5cm}
+		\begin{center}
+			% Простий логотип без складних графічних елементів
+			\begin{tikzpicture}
+				\draw[blue, line width=1pt] (0,0) circle (0.75cm);
+				\node at (0,0) {\large \textbf{WMIFS}};
+			\end{tikzpicture}
+			
+			\vspace{0.2cm}
+			\footnotesize Wydział Matematyki i Informatyki Stosowanej
+		\end{center}
+	\end{frame}
+	
+	% План презентації
+	\begin{frame}
+		\frametitle{Plan prezentacji}
+		
+		\begin{enumerate}
+			\item Cel projektu i opis zjawiska
+			\item Podstawy teoretyczne
+			\item Równanie różniczkowe
+			\item Rozwiązanie analityczne
+			\item Program Maxima
+			\item Wykresy
+			\item Wnioski
+		\end{enumerate}
+	\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+% Slajd: Cel projektu
+\begin{frame}
+	\frametitle{Cel projektu}
+	
+	\begin{center}
+		\textbf{Modelowanie termiczne silnika elektrycznego} \\
+		za pomocą równania różniczkowego
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+			\begin{block}{Cele analityczne}
+				\begin{itemize}
+					\item Wyprowadzenie równania z bilansu energii
+					\item Rozwiązanie analityczne
+					\item Interpretacja fizyczna
+				\end{itemize}
+			\end{block}
+			
+			\begin{block}{Cele symulacyjne}
+				\begin{itemize}
+					\item Implementacja w Maxima
+					\item Generacja wykresów
+					\item Analiza parametrów
+				\end{itemize}
+			\end{block}
+			
+			\begin{exampleblock}{Pytanie badawcze}
+				\textbf{Jak zmiana obciążenia silnika (parametru $P$)} wpływa na:
+				\begin{itemize}
+					\item temperaturę pracy?
+					\item bezpieczeństwo eksploatacji?
+				\end{itemize}
+			\end{exampleblock}
+		\end{column}
+		
+		\begin{column}{0.5\textwidth}
+			\begin{block}{Parametry modelu}
+				\[
+				\begin{aligned}
+					P &- \text{moc strat [W]} \\
+					R_{th} &- \text{rezystancja termiczna [K/W]} \\
+					C_{th} &- \text{pojemność cieplna [J/K]} \\
+					T_a &- \text{temperatura otoczenia [°C]}
+				\end{aligned}
+				\]
+			\end{block}
+			\vspace{-0.3cm}
+			\begin{alertblock}{Badany parametr}
+				\centering
+				\vspace{0.1cm}
+				\textbf{$P$ – moc strat cieplnych silnika [W]} \\
+				\small(związana z jego obciążeniem)
+				\vspace{0.1cm}
+			\end{alertblock}
+			
+			\begin{block}{Zastosowanie praktyczne}
+				\begin{itemize}
+					\item Projektowanie silników
+					\item Dobór układów chłodzenia
+					\item Bezpieczna eksploatacja
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+% Slajd: Model matematyczny – założenia
+\begin{frame}
+	\frametitle{Model matematyczny – założenia}
+	
+	\begin{columns}[T]
+		\begin{column}{0.55\textwidth}
+			\begin{block}{Założenia uproszczające}
+				\begin{itemize}
+					\item Jednorodna temperatura silnika $T(t)$
+					\item Stała moc strat cieplnych $P$
+					\item Stała temperatura otoczenia $T_a$
+					\item Liniowa wymiana ciepła
+					\item Stałe parametry $R_{th}$, $C_{th}$
+				\end{itemize}
+			\end{block}
+			\vspace{-0.3cm}
+			\begin{block}{Analogia elektryczna}
+				Model termiczny $\leftrightarrow$ Obwód RC
+				\begin{itemize}
+					\item $P$ $\leftrightarrow$ źródło prądu
+					\item $R_{th}$ $\leftrightarrow$ rezystor
+					\item $C_{th}$ $\leftrightarrow$ kondensator
+					\item $T$ $\leftrightarrow$ napięcie
+				\end{itemize}
+			\end{block}
+		\end{column}
+		
+		\begin{column}{0.45\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[scale=0.9]
+					% Obwód analogii elektrycznej
+					\draw[thick] (0,0) to[I, l=$P$, *-*] (0,2);
+					\draw[thick] (0,2) -- (2,2);
+					\draw[thick] (2,2) to[R, l=$R_{th}$, *-*] (2,0);
+					\draw[thick] (2,2) -- (4,2);
+					\draw[thick] (4,2) to[C, l=$C_{th}$, *-*] (4,0);
+					\draw[thick] (4,0) -- (0,0);
+					
+					% Temperatura
+					\node at (3,1) {$T(t)$};
+					\draw[<->, blue, thick] (2.2,1.8) -- (3.8,1.8);
+					
+					% Ziemia
+					\draw (0,0) node[ground]{};
+					\node[left] at (0,0) {$T_a$};
+				\end{tikzpicture}
+				
+				\vspace{0.3cm}
+				\textbf{Analogia obwodu RC}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	% Slajd: Bilans energii termicznej i parametry modelu
+	\begin{frame}
+		\frametitle{Bilans energii termicznej}
+		
+		\begin{block}{Podstawowe równanie bilansu}
+			\[
+			C_{th}\frac{dT(t)}{dt} = P - \frac{T(t)-T_a}{R_{th}}
+			\]
+		\end{block}
+		
+		\vspace{-0.2cm} % Мінусовий відступ
+		
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{exampleblock}{Składowe bilansu}
+					\scriptsize
+					\begin{itemize}
+						\itemsep=2pt
+						\item $C_{th}\frac{dT}{dt}$ – zmiana energii
+						\item $P$ – moc dostarczana
+						\item $\frac{T-T_a}{R_{th}}$ – moc odprowadzana
+					\end{itemize}
+				\end{exampleblock}
+				
+				\vspace{-0.3cm}
+				
+				\begin{alertblock}{Interpretacja}
+					\scriptsize
+					\centering
+					\begin{tabular}{@{}cl@{}}
+						$\uparrow$ & Nagrzewanie \\
+						$\downarrow$ & Chłodzenie \\
+						$\Delta$ & Zmiana temperatury
+					\end{tabular}
+				\end{alertblock}
+			\end{column}
+			
+			\begin{column}{0.5\textwidth}
+				\begin{block}{Parametry modelu}
+					\centering
+					\scriptsize
+					\setlength{\tabcolsep}{2pt}
+					
+					\begin{tabular}{@{}p{1.2cm} p{2.5cm}@{}}
+						\hline
+						\textbf{Symbol} & \textbf{Opis} \\
+						\hline
+						$T(t)$ & Temp. silnika [°C] \\
+						$T_a$ & Temp. otoczenia [°C] \\
+						$P$ & Moc strat [W] \\
+						$R_{th}$ & Rezyst. term. [K/W] \\
+						$C_{th}$ & Pojem. cieplna [J/K] \\
+						\hline
+					\end{tabular}
+				\end{block}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+% Slajd: Rozwiązanie analityczne (wersja skrócona)
+\begin{frame}
+	\frametitle{Rozwiązanie analityczne równania}
+	
+	Równanie różniczkowe:
+	\[
+	\frac{d\theta}{dt} + \frac{1}{\tau}\theta = \frac{P}{C_{th}}, 
+	\qquad \tau = R_{th}C_{th}
+	\]
+	
+	Rozwiązanie:
+	\[
+	\theta(t) = P R_{th} + (\theta_0 - P R_{th}) e^{-t/\tau}
+	\]
+	
+	Zależność między temperaturą a przyrostem:
+	\[
+	T(t) = T_a + \theta(t)
+	\]
+	
+	Ostatecznie:
+	\[
+	T(t) = T_a + P R_{th} + (T_0 - T_a - P R_{th}) e^{-t/\tau}
+	\]
+\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+% Slajd: Wnioski z rozwiązania
+\begin{frame}
+	\frametitle{Wnioski z rozwiązania}
+	
+	Temperatura ustalona silnika:
+	\[
+	T_\infty = T_a + P R_{th}
+	\]
+	
+	Stała czasowa nagrzewania:
+	\[
+	\tau = R_{th} C_{th}
+	\]
+	
+	\begin{itemize}
+		\item Większa moc strat $P$ powoduje wzrost temperatury pracy silnika.
+		\item Większe $R_{th}$ lub $C_{th}$ oznaczają wolniejsze nagrzewanie.
+		\item Parametry $R_{th}$ i $C_{th}$ decydują o dynamice procesu cieplnego.
+	\end{itemize}
+\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+\begin{frame}
+	\frametitle{Wykres: Temperatura silnika}
+	
+	\begin{columns}[T]
+		% --- Lewa kolumna: parametry ---
+		\begin{column}{0.38\textwidth}
+			\textbf{Parametry:}
+			\vspace{0.2cm}
+			\begin{itemize}
+				\item $T_a = 20^\circ$C
+				\item $T_0 = 20^\circ$C
+				\item $R_{th} = 2\ \text{K/W}$
+				\item $C_{th} = 5\ \text{J/K}$
+				\item $P \in \{50,\ 150\}\ \text{W}$
+			\end{itemize}
+			
+			\vspace{0.2cm}
+			{\footnotesize
+				Wykres przedstawia przebieg temperatury $T(t)$ w czasie dla dwóch wartości mocy strat $P$.
+			}
+		\end{column}
+		
+		% --- Prawa kolumna: obrazek ---
+		\begin{column}{0.62\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{WYKRES1.png}
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

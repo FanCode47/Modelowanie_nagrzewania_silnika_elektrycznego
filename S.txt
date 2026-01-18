@@ -1,0 +1,323 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[a4paper, margin=0.9in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{textgreek}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{titlesec}
+\usepackage{rotating} % додати в преамбулу
+\usepackage{pdflscape} % додати в преамбулу
+% Додати в преамбулу
+\setcounter{secnumdepth}{2} % Нумерувати тільки до subsection
+\sisetup{
+	locale = DE,
+	detect-all,
+	per-mode = symbol,
+	separate-uncertainty = true
+}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue,
+}
+
+% Налаштування стилів розділів
+\titleformat{\section}
+{\LARGE\bfseries}{\thesection}{0.5em}{}
+
+\titleformat{\subsection}
+{\large\bfseries}{\thesubsection}{0.5em}{}
+
+% Відступи для розділів
+\titlespacing{\section}{0pt}{18pt}{9pt}
+\titlespacing{\subsection}{15pt}{12pt}{6pt} % Відступ зліва 15pt
+
+\setlist[itemize,1]{label=\textbullet}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+	
+\begin{titlepage}
+	\begin{center}
+		\Large
+		
+		% LOGA
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=3.2cm]{prz_pl.png}%
+			\hfill
+			\includegraphics[height=3.2cm]{wmifs_pl.png}
+		\end{figure}
+		
+		{\large\scshape Politechnika Rzeszowska}\\
+		{\large im. Ignacego Łukasiewicza}\\[0.3cm]
+		{\large\scshape\MakeUppercase{Wydział Matematyki i Fizyki Stosowanej}}
+	\end{center}
+	
+	\vspace{2cm}
+	
+	% ===== TEMAT =====
+	\begin{center}
+		\rule{0.85\textwidth}{0.4pt}\\[0.6cm]
+		{\Huge\bfseries Modelowanie nagrzewania silnika elektrycznego}\\[0.4cm]
+		{\large z wykorzystaniem równań różniczkowych}\\[0.6cm]
+		\rule{0.85\textwidth}{0.4pt}
+	\end{center}
+	
+	% ===== PRZEDMIOT =====
+	\begin{center}
+		{\small Przedmiot: Równania różniczkowe}
+	\end{center}
+	
+	\vspace{4cm}
+	
+	% ===== WYKONAWCY / OPIEKUN =====
+	\begin{minipage}{0.45\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Wykonawcy:}\\
+			Vitalii Omeliukh [181517]\\
+			Dmytro Pavlyk [181518]\\
+			Grupa: 4
+		\end{flushleft}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Opiekun projektu:}\\
+			dr inż. Tomasz Stachyra
+		\end{flushright}
+	\end{minipage}
+	
+	\vfill
+	\begin{center}
+		{\large Rzeszów, \today}
+	\end{center}
+\end{titlepage}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Wstęp teoretyczny}
+
+Celem projektu jest opisanie procesu nagrzewania silnika elektrycznego w czasie
+z wykorzystaniem równania różniczkowego zwyczajnego I rzędu.
+Podczas pracy silnik generuje straty mocy, które zamieniają się w ciepło,
+a jednocześnie oddaje ciepło do otoczenia. W wyniku konkurencji tych dwóch
+zjawisk temperatura silnika rośnie, a następnie dąży do wartości ustalonej.
+
+\subsection{Wyprowadzenie modelu matematycznego}
+
+Zgodnie z zasadą bilansu energii cieplnej, zmiana energii wewnętrznej obiektu
+jest równa różnicy między mocą doprowadzaną (stratami) a mocą odprowadzaną
+do otoczenia. Przyjmujemy uproszczony model skupiony, w którym cały silnik
+ma jednorodną temperaturę $T(t)$.
+
+Wprowadzamy następujące wielkości:
+\begin{itemize}
+	\item $T(t)$ -- temperatura silnika,
+	\item $T_a$ -- temperatura otoczenia,
+	\item $P$ -- moc strat cieplnych silnika [W],
+	\item $R_{th}$ -- rezystancja termiczna [K/W],
+	\item $C_{th}$ -- pojemność cieplna [J/K].
+\end{itemize}
+
+Moc odprowadzana do otoczenia w liniowym modelu wymiany ciepła jest proporcjonalna
+do różnicy temperatur:
+\[
+P_{\text{out}} = \frac{T(t)-T_a}{R_{th}}.
+\]
+
+Zmiana energii wewnętrznej jest opisana przez pojemność cieplną:
+\[
+P_{\text{in}} - P_{\text{out}} = C_{th}\frac{dT(t)}{dt}.
+\]
+
+Ponieważ moc doprowadzana jest równa stratom $P$, otrzymujemy równanie bilansu:
+\[
+C_{th}\frac{dT(t)}{dt} = P - \frac{T(t)-T_a}{R_{th}}.
+\]
+\newpage
+\subsection{Rozwiązanie analityczne równania}
+
+Wprowadzamy przyrost temperatury względem otoczenia:
+\[
+\theta(t) = T(t) - T_a.
+\]
+
+Po podstawieniu $T(t)=\theta(t)+T_a$ otrzymujemy:
+\[
+C_{th}\frac{d\theta(t)}{dt} = P - \frac{\theta(t)}{R_{th}}.
+\]
+
+Dzieląc stronami przez $C_{th}$ i wprowadzając stałą czasową
+\[
+\tau = R_{th}C_{th},
+\]
+dostajemy standardową postać:
+\[
+\frac{d\theta}{dt} + \frac{1}{\tau}\theta = \frac{P}{C_{th}}.
+\]
+
+Rozwiązanie ogólne przy warunku początkowym $T(0)=T_0$ (czyli $\theta(0)=T_0-T_a$)
+ma postać:
+\[
+\theta(t)=PR_{th} + \bigl((T_0-T_a)-PR_{th}\bigr)e^{-t/\tau}.
+\]
+
+Zatem temperatura silnika w funkcji czasu:
+\[
+T(t)=T_a+PR_{th} + (T_0-T_a-PR_{th})e^{-t/\tau}.
+\]
+
+Temperatura ustalona (dla $t\to\infty$) wynosi:
+\[
+T_{\infty}=\lim_{t\to\infty}T(t)=T_a+PR_{th}.
+\]
+
+Temperatura ustalona (dla $t\to\infty$) wynosi:
+\[
+T_{\infty} = T_a + PR_{th}.
+\]
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Analiza symulacyjna w programie Maxima}
+
+Do rozwiązania problemu wykorzystano środowisko \texttt{wxMaxima}. 
+Projekt polega na modelowaniu nagrzewania silnika elektrycznego z wykorzystaniem
+równania różniczkowego I rzędu, opisującego bilans energii cieplnej.
+Celem symulacji było zbadanie wpływu mocy strat cieplnych $P$ (związanej z obciążeniem silnika)
+na przebieg temperatury w czasie oraz na wartość temperatury ustalonej.
+
+\subsection{Metodologia obliczeń}
+
+W programie zdefiniowano podstawowe parametry modelu termicznego:
+pojemność cieplną $C_{th}$, rezystancję termiczną $R_{th}$, temperaturę otoczenia $T_a$
+oraz moc strat cieplnych $P$ (badany parametr).
+Następnie zapisano i rozwiązano równanie różniczkowe opisujące zmianę temperatury silnika:
+
+\[
+C_{th}\frac{dT(t)}{dt} = P - \frac{T(t)-T_a}{R_{th}}.
+\]
+
+Równanie zostało rozwiązane symbolicznie przy pomocy funkcji \texttt{ode2},
+a następnie wyznaczono rozwiązanie szczególne dla zadanych warunków początkowych
+za pomocą polecenia \texttt{ic1}.  
+Do wizualizacji wyników wykorzystano funkcję \texttt{wxdraw2d}, która umożliwia
+rysowanie wykresów zależności temperatury od czasu.
+
+\subsection{Wybrane scenariusze symulacyjne}
+
+W celu analizy wpływu obciążenia silnika na jego nagrzewanie rozpatrzono trzy przypadki,
+odpowiadające różnym poziomom mocy strat cieplnych:
+
+\textbf{Scenariusz 1: Małe obciążenie silnika}
+\begin{itemize}
+	\item Temperatura otoczenia: $T_a = 20^\circ C$,
+	\item Temperatura początkowa: $T_0 = 20^\circ C$,
+	\item Rezystancja termiczna: $R_{th} = 0.2 \ \mathrm{K/W}$,
+	\item Pojemność cieplna: $C_{th} = 1000 \ \mathrm{J/K}$,
+	\item Moc strat: $P = 50 \ \mathrm{W}$.
+\end{itemize}
+
+
+\textbf{Scenariusz 2: Duże obciążenie silnika}
+\begin{itemize}
+	\item Temperatura otoczenia: $T_a = 20^\circ C$,
+	\item Temperatura początkowa: $T_0 = 20^\circ C$,
+	\item Rezystancja termiczna: $R_{th} = 0.2 \ \mathrm{K/W}$,
+	\item Pojemność cieplna: $C_{th} = 1000 \ \mathrm{J/K}$,
+	\item Moc strat: $P = 150 \ \mathrm{W}$.
+\end{itemize}
+
+Przyjęcie trzech różnych wartości mocy strat pozwala na bezpośrednie porównanie,
+w jaki sposób zmiana obciążenia wpływa na temperaturę ustaloną silnika
+oraz na czas osiągnięcia stanu quasi-stacjonarnego.
+Stała czasowa nagrzewania $\tau = R_{th}C_{th} = 200$ s jest identyczna we wszystkich przypadkach,
+co pozwala wyizolować wpływ samego parametru $P$.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{wykres1.png}
+	\caption{Przebieg temperatury silnika $T(t)$ w czasie dla różnych wartości mocy strat $P$.}
+	\label{fig:temp_silnika}
+\end{figure}
+\subsection{Procedura obliczeniowa}
+
+Symulację przeprowadzono w następujących krokach:
+
+\begin{enumerate}
+	\item \textbf{Definicja równania} – zapisanie równania różniczkowego z użyciem składni Maxima.
+	\item \textbf{Rozwiązanie analityczne} – użycie funkcji \texttt{ode2} do uzyskania rozwiązania ogólnego.
+	\item \textbf{Uwzględnienie warunku początkowego} – zastosowanie \texttt{ic1} dla $T(0) = T_0$.
+	\item \textbf{Podstawienie parametrów} – obliczenie konkretnych przebiegów dla każdego scenariusza.
+	\item \textbf{Wizualizacja} – generacja wykresów za pomocą \texttt{wxdraw2d}.
+	\item \textbf{Analiza wyników} – porównanie temperatur ustalonych i czasów nagrzewania.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

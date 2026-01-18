@@ -1,0 +1,540 @@
+LAB1
+
+Z1
+ -->	row:x^2*'diff(y,x)+y-3=0;
+(row)	x^2·('diff(y,x,1))+y-3=0
+ -->	ode2(row,y,x);
+(%o2)	y=(3·%e^(-1/x)+%c)·%e^(1/x)
+ -->	rozw:ratsimp(%); /*rozw. ogólne*/
+(rozw)	y=%c·%e^(1/x)+3
+I sposób(na kartce):
+ -->	subst([x=2, y=5], rozw);
+(%o5)	5=sqrt(%e)·%c+3
+ -->	solve(%,%c);
+(%o6)	[%c=2/sqrt(%e)]
+ -->	subst(%, rozw); /*rozw. szczególne*/
+(%o7)	y=2·%e^(1/x-1/2)+3
+II sposób:
+ -->	rozw_szcz:ic1(rozw, y=5, x=2);
+(rozw_szcz)	y=(2·%e^(1/x)+3·sqrt(%e))/sqrt(%e)
+ -->	expand(%);
+(%o10)	y=2·%e^(1/x-1/2)+3
+ -->	wxdraw2d(
+	explicit(rhs(rozw_szcz),x,-4,5),
+	yrange=[0,10],
+	point_type=filled_circle,
+	points([[2,5]])
+	);
+(%t18)	 (Graphics) 
+(%o18)	
+ -->	rozw1:solve(row,'diff(y,x));
+(rozw1)	['diff(y,x,1)=-(y-3)/x^2]
+ -->	prow1:map(rhs,rozw1);
+(prow1)	[-(y-3)/x^2]
+ -->	plotdf(prow1,[x,-4,5],[y,0,10],[trajectory_at,2,5]);
+(%o28)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+ -->	define(g(x),rhs(rozw_szcz));
+(%o29)	g(x):=(2·%e^(1/x)+3·sqrt(%e))/sqrt(%e)
+ -->	plotdf(prow1,[x,-4,5],[y,0,10],[trajectory_at,-2,float(g(-2))]);
+(%o32)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+Z2
+ -->	kill(all);
+(%o0)	done
+ -->	rown:x^2*y^2*'diff(y,x)+exp(-1/x)*y^3=0;
+(rown)	x^2·y^2·('diff(y,x,1))+%e^(-1/x)·y^3=0
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	y=%c·%e^(-%e^(-1/x))
+ -->	rozw_szcz:ic1(rozw_og,x=-4,y=10);
+(rozw_szcz)	y=10·%e^(%e^(1/4)-%e^(-1/x))
+ -->	wxdraw2d(
+	explicit(rhs(rozw_szcz),x,-8,10),
+	point_type=filled_circle,
+	points([[-4,10]]),
+	yrange=[-5,20]
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	rozw:solve(rown,'diff(y,x));
+(rozw)	['diff(y,x,1)=-(%e^(-1/x)·y)/x^2]
+ -->	prow:map(rhs,rozw1);
+(prow)	[-(%e^(-1/x)·y)/x^2]
+ -->	plotdf(prow,[x,-8,10],[y,-5,20],[trajectory_at,-4,10]);
+(%o15)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+ -->	define(g(x),rhs(rozw_szcz));
+(%o16)	g(x):=10·%e^(%e^(1/4)-%e^(-1/x))
+ -->	plotdf(prow,[x,-8,10],[y,-5,20],[trajectory_at,4,float(g(4))]);
+(%o18)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+Z3
+ -->	kill(all);
+(%o0)	done
+ -->	rown:sin(x)*'diff(y,x)-y*log(y)=0;
+(rown)	sin(x)·('diff(y,x,1))-y·log(y)=0
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	log(log(y))=%c-(log(cos(x)+1)-log(cos(x)-1))/2
+ -->	rozw_szcz:ic1(rozw_og,x=%pi/2,y=2);
+(rozw_szcz)	log(log(y))=-(log(cos(x)+1)-log(cos(x)-1)-2·log(log(2))+log(-1))/2
+ -->	rozw1:solve(rozw_szcz,y)[1];
+(rozw1)	y=%e^(log(2)·%e^(-log(cos(x)+1)/2+log(cos(x)-1)/2-log(-1)/2))
+ -->	wxdraw2d(
+	explicit(rhs(rozw1),x,-1,5),
+	yrange=[0,5]
+	);
+(%t8)	 (Graphics) 
+(%o8)	
+Z4
+ -->	kill(all);
+(%o0)	done
+ -->	rown:'diff(y,x)=a*y/log(y);
+(rown)	'diff(y,x,1)=(a·y)/log(y)
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	log(y)^2/(2·a)=x+%c
+ -->	rozw_szcz:ic1(rozw_og,x=%pi/2,y=%e);
+(rozw_szcz)	log(y)^2/(2·a)=(2·a·x-π·a+1)/(2·a)
+ -->	rozw1:solve(rozw_szcz,y)[1];
+(rozw1)	y=%e^(-sqrt(2·a·x-π·a+1))
+ -->	rozw2:solve(rozw_szcz,y)[2];
+(rozw2)	y=%e^sqrt(2·a·x-π·a+1)
+ -->	plotdf(a*y/log(y),
+	    [trajectory_at,float(%pi/2),float(%e)],
+	    [x, -6, 6], [y, 0,3],
+	    [parameters,"a=1"],
+	    [sliders,"a=-2:2"]);
+(%o7)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+
+
+
+
+
+
+
+
+
+
+LAB2
+
+Z1
+ -->	row:x^2*'diff(y,x)+y-3=0;
+(row)	x^2·('diff(y,x,1))+y-3=0
+ -->	ode2(row,y,x);
+(%o2)	y=(3·%e^(-1/x)+%c)·%e^(1/x)
+ -->	rozw:ratsimp(%); /*rozw. ogólne*/
+(rozw)	y=%c·%e^(1/x)+3
+I sposób(na kartce):
+ -->	subst([x=2, y=5], rozw);
+(%o5)	5=sqrt(%e)·%c+3
+ -->	solve(%,%c);
+(%o6)	[%c=2/sqrt(%e)]
+ -->	subst(%, rozw); /*rozw. szczególne*/
+(%o7)	y=2·%e^(1/x-1/2)+3
+II sposób:
+ -->	rozw_szcz:ic1(rozw, y=5, x=2);
+(rozw_szcz)	y=(2·%e^(1/x)+3·sqrt(%e))/sqrt(%e)
+ -->	expand(%);
+(%o10)	y=2·%e^(1/x-1/2)+3
+ -->	wxdraw2d(
+	explicit(rhs(rozw_szcz),x,-4,5),
+	yrange=[0,10],
+	point_type=filled_circle,
+	points([[2,5]])
+	);
+(%t18)	 (Graphics) 
+(%o18)	
+ -->	rozw1:solve(row,'diff(y,x));
+(rozw1)	['diff(y,x,1)=-(y-3)/x^2]
+ -->	prow1:map(rhs,rozw1);
+(prow1)	[-(y-3)/x^2]
+ -->	plotdf(prow1,[x,-4,5],[y,0,10],[trajectory_at,2,5]);
+(%o28)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+ -->	define(g(x),rhs(rozw_szcz));
+(%o29)	g(x):=(2·%e^(1/x)+3·sqrt(%e))/sqrt(%e)
+ -->	plotdf(prow1,[x,-4,5],[y,0,10],[trajectory_at,-2,float(g(-2))]);
+(%o32)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+Z2
+ -->	kill(all);
+(%o0)	done
+ -->	rown:x^2*y^2*'diff(y,x)+exp(-1/x)*y^3=0;
+(rown)	x^2·y^2·('diff(y,x,1))+%e^(-1/x)·y^3=0
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	y=%c·%e^(-%e^(-1/x))
+ -->	rozw_szcz:ic1(rozw_og,x=-4,y=10);
+(rozw_szcz)	y=10·%e^(%e^(1/4)-%e^(-1/x))
+ -->	wxdraw2d(
+	explicit(rhs(rozw_szcz),x,-8,10),
+	point_type=filled_circle,
+	points([[-4,10]]),
+	yrange=[-5,20]
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	rozw:solve(rown,'diff(y,x));
+(rozw)	['diff(y,x,1)=-(%e^(-1/x)·y)/x^2]
+ -->	prow:map(rhs,rozw1);
+(prow)	[-(%e^(-1/x)·y)/x^2]
+ -->	plotdf(prow,[x,-8,10],[y,-5,20],[trajectory_at,-4,10]);
+(%o15)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+ -->	define(g(x),rhs(rozw_szcz));
+(%o16)	g(x):=10·%e^(%e^(1/4)-%e^(-1/x))
+ -->	plotdf(prow,[x,-8,10],[y,-5,20],[trajectory_at,4,float(g(4))]);
+(%o18)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+Z3
+ -->	kill(all);
+(%o0)	done
+ -->	rown:sin(x)*'diff(y,x)-y*log(y)=0;
+(rown)	sin(x)·('diff(y,x,1))-y·log(y)=0
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	log(log(y))=%c-(log(cos(x)+1)-log(cos(x)-1))/2
+ -->	rozw_szcz:ic1(rozw_og,x=%pi/2,y=2);
+(rozw_szcz)	log(log(y))=-(log(cos(x)+1)-log(cos(x)-1)-2·log(log(2))+log(-1))/2
+ -->	rozw1:solve(rozw_szcz,y)[1];
+(rozw1)	y=%e^(log(2)·%e^(-log(cos(x)+1)/2+log(cos(x)-1)/2-log(-1)/2))
+ -->	wxdraw2d(
+	explicit(rhs(rozw1),x,-1,5),
+	yrange=[0,5]
+	);
+(%t8)	 (Graphics) 
+(%o8)	
+Z4
+ -->	kill(all);
+(%o0)	done
+ -->	rown:'diff(y,x)=a*y/log(y);
+(rown)	'diff(y,x,1)=(a·y)/log(y)
+ -->	rozw_og:ode2(rown,y,x);
+(rozw_og)	log(y)^2/(2·a)=x+%c
+ -->	rozw_szcz:ic1(rozw_og,x=%pi/2,y=%e);
+(rozw_szcz)	log(y)^2/(2·a)=(2·a·x-π·a+1)/(2·a)
+ -->	rozw1:solve(rozw_szcz,y)[1];
+(rozw1)	y=%e^(-sqrt(2·a·x-π·a+1))
+ -->	rozw2:solve(rozw_szcz,y)[2];
+(rozw2)	y=%e^sqrt(2·a·x-π·a+1)
+ -->	plotdf(a*y/log(y),
+	    [trajectory_at,float(%pi/2),float(%e)],
+	    [x, -6, 6], [y, 0,3],
+	    [parameters,"a=1"],
+	    [sliders,"a=-2:2"]);
+(%o7)	"C:/Users/student/AppData/Local/Temp/maxout8472.xmaxima"
+
+
+
+
+
+
+
+LAB3
+  1 Zadanie 1
+x(t) - ile kg soli jest w zbiorniku w czasie t
+	0.25 [kg/l] * 20[l/min] = 5[kg/min] - tyle soli wpływa do zbiornika
+	x - ilość soli w zbiorniku [kg]
+	x/200 - stężenie soli w zbiorniku
+	x/200 [kg/l] * 20 [l/min] = x/10 [kg/min] - tyle soli wypływa ze zbiornika
+	dx/dt - tempo przyrostu soli w zbiorniku
+	x' = 5-x/10
+ -->	row:'diff(x,t)=5-x/10;
+(%o1)	'diff(x,t,1)=5-x/10
+ -->	rozw:ode2(row,x,t);
+(%o2)	x=%e^(-t/10)·
+(50·%e^(t/10)+%c)
+ -->	rozw1:ic1(rozw, t=0, x=0);
+(%o3)	x=%e^(-t/10)·
+(50·%e^(t/10)-50)
+ -->	rozw1:expand(rozw1);
+(%o4)	x=50-50·
+%e^(-t/10)
+ -->	limit(50-50*%e^(-t/10),t,inf);
+(%o5)	50
+ -->	define(f(t),rhs(rozw1));
+(%o6)	f(t):=50-50·
+%e^(-t/10)
+ -->	wxdraw2d(
+	yrange = [0,60],
+	key = "Ograniczenie gorne",
+	explicit(50,t,0,60),
+	color = red,
+	key = "ile kg soli w zbiorniku",
+	explicit(f(t),t,0,60)
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	wxanimate_framerate:100;
+(%o8)	100
+ -->	with_slider_draw(
+	  i,makelist(a,a,0,60,1/2),
+	  yrange = [0,60],
+	  key = "Ograniczenie gorne",
+	  explicit(50,t,0,60),
+	  color = red,
+	  key = "ile kg soli w zbiorniku",
+	  explicit(f(t),t,0,i),
+	  color = green,
+	  key = "",
+	  point_type=filled_circle,
+	  points([[i,f(i)]])
+	);
+(%t9)	 << Animation >> 
+(%t10)	
+
+(%o10)	
+  2 Zadanie 2
+ -->	kill(all);
+(%o0)	done
+ -->	row:4*('diff(y,x))^2-y^2+4=0;
+(%o1)	4·('diff(y,x,1))^2-y^2+
+4=0
+ -->	ode2(row,y,x);
+(%t2)	4·('diff(y,x,1))^2-y^2+
+4=0
+
+"first order equation not linear in y'"
+
+(%o2)	false
+ -->	load('contrib_ode);
+(%o3)	"C:/maxima-5.45.1/share/maxima/5.45.1/share/contrib/diffequations/contrib_ode.mac"
+ -->	contrib_ode(row,y,x);
+(%t4)	4·('diff(y,x,1))^2-y^2+
+4=0
+
+"first order equation not linear in y'"
+
+(%o4)	[[x=%c-2·
+asinh(%t),y=-2·sqrt(%t^2+1)],[x=2·asinh(%t)+%c,y=
+2·sqrt(%t^2+1)]]
+ -->	wxdraw2d(
+	yrange = [-10,10],
+	parametric(-2*asinh(t),-2*sqrt(t^2+1),t,-1,4),
+	xaxis = true
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	wxdraw2d(
+	yrange = [-10,10],
+	parametric(2*asinh(t),2*sqrt(t^2+1),t,-1,4),
+	xaxis = true
+	);
+(%t8)	 (Graphics) 
+(%o8)	
+ -->	solve(x=2*asinh(t),t);
+(%o9)	[t=sinh(x/2)]
+ -->	subst(t=sinh(x/2),y=2*sqrt(t^2+1));
+(%o10)	y=2·
+sqrt(sinh(x/2)^2+1)
+ -->	define(f(x),rhs(%));
+(%o11)	f(x):=2·
+sqrt(sinh(x/2)^2+1)
+ -->	fpprintprec:3;
+(%o13)	3
+ -->	float(integrate(f(x)-0,x,0,4));
+(%o14)	14.5
+ -->	float(integrate(sqrt(1+diff(f(x),x)^2),x,0,4));
+(%o16)	7.25
+ -->	wxanimate_framerate:100;
+(%o17)	100
+ -->	with_slider_draw(
+	  i,makelist(a,a,0,4,1/10),
+	  xaxis = true,
+	  yaxis = true,
+	  yrange = [-1,10],
+	  fill_color = yellow,
+	  filled_func = f(x), /*ograniczenie górne*/
+	  explicit(0,x,0,i), /*ograniczenie dolne*/
+	  filled_func = false,
+	  explicit(f(x),x,-1,4),
+	  color=red,
+	  line_width = 3,
+	  explicit(f(x),x,0,i),
+	  color = green,
+	  point_type=filled_circle,
+	  points([[0,f(0)],[i,f(i)]]),
+	  color = black,
+	  label([concat("|P|=",float(integrate(f(x)-0,x,0,i))),1,1]),
+	  label([concat("|L|=",float(integrate(sqrt(1+diff(f(x),x)^2),x,0,i))),1,4])
+	);
+(%t24)	 << Animation >> 
+(%t25)	
+
+(%o25)	
+Zadanie 3
+ -->	rysuj_rr_2_rzedu(F,c,k,m,t0,x0,diffx):=(
+	row:'diff(x,t,2)+c/m*'diff(x,t)+k/m*x=1/m*F,
+	rozw:ode2(row,x,t),
+	rozw2:ic2(rozw, t=t0, x=x0,'diff(x,t)=diffx),
+	wxdraw2d(
+	    explicit(rhs(rozw2),t,0,30),
+	    yrange = [-5,5],
+	    xaxis = true
+	    )
+	
+	)$
+Zadanie a - bez wymuszenia (F(t)=0)
+	a1) bez tłumienia (c=0)
+	x''+3x=0
+ -->	rysuj_rr_2_rzedu(0,0,3,1,0,1,1) /*F=0,c=0,k=3,m=1,t0=0,x0=1,diffx=1*/;
+(%t28)	 (Graphics) 
+(%o28)	
+x''+x=1/2*cos(t)
+ -->	rysuj_rr_2_rzedu(1/2*cos(t),0,1,1,0,1,1) /*F=1/2*cos(t),c=0,k=1,m=1,t0=0,x0=1,diffx=1*/;
+(%t29)	 (Graphics) 
+(%o29)	
+
+
+
+
+
+
+
+
+
+
+
+LAB4
+  1 Zadanie 1
+x(t) - ile kg soli jest w zbiorniku w czasie t
+	0.25 [kg/l] * 20[l/min] = 5[kg/min] - tyle soli wpływa do zbiornika
+	x - ilość soli w zbiorniku [kg]
+	x/200 - stężenie soli w zbiorniku
+	x/200 [kg/l] * 20 [l/min] = x/10 [kg/min] - tyle soli wypływa ze zbiornika
+	dx/dt - tempo przyrostu soli w zbiorniku
+	x' = 5-x/10
+ -->	row:'diff(x,t)=5-x/10;
+(%o1)	'diff(x,t,1)=5-x/10
+ -->	rozw:ode2(row,x,t);
+(%o2)	x=%e^(-t/10)·
+(50·%e^(t/10)+%c)
+ -->	rozw1:ic1(rozw, t=0, x=0);
+(%o3)	x=%e^(-t/10)·
+(50·%e^(t/10)-50)
+ -->	rozw1:expand(rozw1);
+(%o4)	x=50-50·
+%e^(-t/10)
+ -->	limit(50-50*%e^(-t/10),t,inf);
+(%o5)	50
+ -->	define(f(t),rhs(rozw1));
+(%o6)	f(t):=50-50·
+%e^(-t/10)
+ -->	wxdraw2d(
+	yrange = [0,60],
+	key = "Ograniczenie gorne",
+	explicit(50,t,0,60),
+	color = red,
+	key = "ile kg soli w zbiorniku",
+	explicit(f(t),t,0,60)
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	wxanimate_framerate:100;
+(%o8)	100
+ -->	with_slider_draw(
+	  i,makelist(a,a,0,60,1/2),
+	  yrange = [0,60],
+	  key = "Ograniczenie gorne",
+	  explicit(50,t,0,60),
+	  color = red,
+	  key = "ile kg soli w zbiorniku",
+	  explicit(f(t),t,0,i),
+	  color = green,
+	  key = "",
+	  point_type=filled_circle,
+	  points([[i,f(i)]])
+	);
+(%t9)	 << Animation >> 
+(%t10)	
+
+(%o10)	
+  2 Zadanie 2
+ -->	kill(all);
+(%o0)	done
+ -->	row:4*('diff(y,x))^2-y^2+4=0;
+(%o1)	4·('diff(y,x,1))^2-y^2+
+4=0
+ -->	ode2(row,y,x);
+(%t2)	4·('diff(y,x,1))^2-y^2+
+4=0
+
+"first order equation not linear in y'"
+
+(%o2)	false
+ -->	load('contrib_ode);
+(%o3)	"C:/maxima-5.45.1/share/maxima/5.45.1/share/contrib/diffequations/contrib_ode.mac"
+ -->	contrib_ode(row,y,x);
+(%t4)	4·('diff(y,x,1))^2-y^2+
+4=0
+
+"first order equation not linear in y'"
+
+(%o4)	[[x=%c-2·
+asinh(%t),y=-2·sqrt(%t^2+1)],[x=2·asinh(%t)+%c,y=
+2·sqrt(%t^2+1)]]
+ -->	wxdraw2d(
+	yrange = [-10,10],
+	parametric(-2*asinh(t),-2*sqrt(t^2+1),t,-1,4),
+	xaxis = true
+	);
+(%t7)	 (Graphics) 
+(%o7)	
+ -->	wxdraw2d(
+	yrange = [-10,10],
+	parametric(2*asinh(t),2*sqrt(t^2+1),t,-1,4),
+	xaxis = true
+	);
+(%t8)	 (Graphics) 
+(%o8)	
+ -->	solve(x=2*asinh(t),t);
+(%o9)	[t=sinh(x/2)]
+ -->	subst(t=sinh(x/2),y=2*sqrt(t^2+1));
+(%o10)	y=2·
+sqrt(sinh(x/2)^2+1)
+ -->	define(f(x),rhs(%));
+(%o11)	f(x):=2·
+sqrt(sinh(x/2)^2+1)
+ -->	fpprintprec:3;
+(%o13)	3
+ -->	float(integrate(f(x)-0,x,0,4));
+(%o14)	14.5
+ -->	float(integrate(sqrt(1+diff(f(x),x)^2),x,0,4));
+(%o16)	7.25
+ -->	wxanimate_framerate:100;
+(%o17)	100
+ -->	with_slider_draw(
+	  i,makelist(a,a,0,4,1/10),
+	  xaxis = true,
+	  yaxis = true,
+	  yrange = [-1,10],
+	  fill_color = yellow,
+	  filled_func = f(x), /*ograniczenie górne*/
+	  explicit(0,x,0,i), /*ograniczenie dolne*/
+	  filled_func = false,
+	  explicit(f(x),x,-1,4),
+	  color=red,
+	  line_width = 3,
+	  explicit(f(x),x,0,i),
+	  color = green,
+	  point_type=filled_circle,
+	  points([[0,f(0)],[i,f(i)]]),
+	  color = black,
+	  label([concat("|P|=",float(integrate(f(x)-0,x,0,i))),1,1]),
+	  label([concat("|L|=",float(integrate(sqrt(1+diff(f(x),x)^2),x,0,i))),1,4])
+	);
+(%t24)	 << Animation >> 
+(%t25)	
+
+(%o25)	
+Zadanie 3
+ -->	rysuj_rr_2_rzedu(F,c,k,m,t0,x0,diffx):=(
+	row:'diff(x,t,2)+c/m*'diff(x,t)+k/m*x=1/m*F,
+	rozw:ode2(row,x,t),
+	rozw2:ic2(rozw, t=t0, x=x0,'diff(x,t)=diffx),
+	wxdraw2d(
+	    explicit(rhs(rozw2),t,0,30),
+	    yrange = [-5,5],
+	    xaxis = true
+	    )
+	
+	)$
+Zadanie a - bez wymuszenia (F(t)=0)
+	a1) bez tłumienia (c=0)
+	x''+3x=0
+ -->	rysuj_rr_2_rzedu(0,0,3,1,0,1,1) /*F=0,c=0,k=3,m=1,t0=0,x0=1,diffx=1*/;
+(%t28)	 (Graphics) 
+(%o28)	
+x''+x=1/2*cos(t)
+ -->	rysuj_rr_2_rzedu(1/2*cos(t),0,1,1,0,1,1) /*F=1/2*cos(t),c=0,k=1,m=1,t0=0,x0=1,diffx=1*/;
+(%t29)	 (Graphics) 
+(%o29)	
