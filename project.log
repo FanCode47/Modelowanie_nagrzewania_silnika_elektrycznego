@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.12.30)  18 JAN 2026 21:49
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.12.30)  19 JAN 2026 07:31
  restricted system commands enabled.
 **project.tex
 (./project.tex
@@ -1290,95 +1290,95 @@ Overfull \vbox (31.64699pt too high) detected at line 267
 
 [5
 
-] [6
+]
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <9> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 402.
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 402.
+ [6
 
 ] [7
 
 ]
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 351.
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 351.
-<WYKRES1.png, id=67, 473.51906pt x 356.0803pt>
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 480.
+<WYKRES1.png, id=76, 473.51906pt x 356.0803pt>
 File: WYKRES1.png Graphic file (type png)
 <use WYKRES1.png>
-Package luatex.def Info: WYKRES1.png  used on input line 351.
+Package luatex.def Info: WYKRES1.png  used on input line 480.
 (luatex.def)             Requested size: 246.96797pt x 185.71703pt.
 
-Overfull \vbox (2.23734pt too high) detected at line 351
+Overfull \vbox (2.23734pt too high) detected at line 480
  []
 
 [8
 
 <./WYKRES1.png>]
-<WYKRES2_1.png, id=75, 1204.5pt x 903.375pt>
+<WYKRES2_1.png, id=84, 1204.5pt x 903.375pt>
 File: WYKRES2_1.png Graphic file (type png)
 <use WYKRES2_1.png>
-Package luatex.def Info: WYKRES2_1.png  used on input line 395.
+Package luatex.def Info: WYKRES2_1.png  used on input line 524.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <14.4> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 395.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 524.
  [9
 
 <./WYKRES2_1.png>]
-<WYKRES2_2.png, id=83, 1204.5pt x 903.375pt>
+<WYKRES2_2.png, id=92, 1204.5pt x 903.375pt>
 File: WYKRES2_2.png Graphic file (type png)
 <use WYKRES2_2.png>
-Package luatex.def Info: WYKRES2_2.png  used on input line 436.
+Package luatex.def Info: WYKRES2_2.png  used on input line 565.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
  [10
 
 <./WYKRES2_2.png>]
-<WYKRES2_3.png, id=89, 1204.5pt x 903.375pt>
+<WYKRES2_3.png, id=98, 1204.5pt x 903.375pt>
 File: WYKRES2_3.png Graphic file (type png)
 <use WYKRES2_3.png>
-Package luatex.def Info: WYKRES2_3.png  used on input line 477.
+Package luatex.def Info: WYKRES2_3.png  used on input line 606.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
  [11
 
 <./WYKRES2_3.png>]
-<WYKRES2_4.png, id=96, 1204.5pt x 903.375pt>
+<WYKRES2_4.png, id=105, 1204.5pt x 903.375pt>
 File: WYKRES2_4.png Graphic file (type png)
 <use WYKRES2_4.png>
-Package luatex.def Info: WYKRES2_4.png  used on input line 518.
+Package luatex.def Info: WYKRES2_4.png  used on input line 647.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
  [12
 
 <./WYKRES2_4.png>]
-<WYKRES2_5.png, id=102, 1204.5pt x 903.375pt>
+<WYKRES2_5.png, id=111, 1204.5pt x 903.375pt>
 File: WYKRES2_5.png Graphic file (type png)
 <use WYKRES2_5.png>
-Package luatex.def Info: WYKRES2_5.png  used on input line 559.
+Package luatex.def Info: WYKRES2_5.png  used on input line 688.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
  [13
 
 <./WYKRES2_5.png>]
-<WYKRES2_6.png, id=108, 1204.5pt x 903.375pt>
+<WYKRES2_6.png, id=117, 1204.5pt x 903.375pt>
 File: WYKRES2_6.png Graphic file (type png)
 <use WYKRES2_6.png>
-Package luatex.def Info: WYKRES2_6.png  used on input line 600.
+Package luatex.def Info: WYKRES2_6.png  used on input line 729.
 (luatex.def)             Requested size: 231.03711pt x 173.26959pt.
  [14
 
 <./WYKRES2_6.png>] [15
 
 ]
-<WYKRES3.png, id=119, 480.29437pt x 360.59718pt>
+<WYKRES3.png, id=128, 480.29437pt x 360.59718pt>
 File: WYKRES3.png Graphic file (type png)
 <use WYKRES3.png>
-Package luatex.def Info: WYKRES3.png  used on input line 658.
+Package luatex.def Info: WYKRES3.png  used on input line 787.
 (luatex.def)             Requested size: 246.96797pt x 185.42075pt.
 
-Overfull \vbox (1.94106pt too high) detected at line 658
+Overfull \vbox (1.94106pt too high) detected at line 787
  []
 
 [16
 
 <./Wykres3.png>]
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <9> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 707.
-
-Overfull \vbox (2.81432pt too high) detected at line 707
+Overfull \vbox (2.81432pt too high) detected at line 836
  []
 
 [17
@@ -1405,18 +1405,18 @@ Package rerunfilecheck Info: File `project.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49544 strings out of 476081
+ 49546 strings out of 476081
  125240,1977958 words of node,token memory allocated
- 3484 words of node memory still in use:
+ 3508 words of node memory still in use:
    40 hlist, 12 vlist, 4 rule, 24 disc, 8 local_par, 78 glue, 21 kern, 19 penalt
-y, 1 margin_kern, 122 glyph, 197 attribute, 62 glue_spec, 100 attribute_list, 4 
+y, 1 margin_kern, 122 glyph, 205 attribute, 62 glue_spec, 104 attribute_list, 4 
 write, 30 pdf_colorstack nodes
-   avail lists: 2:4039,3:1407,4:657,5:439,6:121,7:3945,8:28,9:1124,10:12,11:504
- 70933 multiletter control sequences out of 65536+600000
+   avail lists: 2:4027,3:1407,4:657,5:438,6:121,7:3945,8:31,9:1124,10:12,11:504
+ 70935 multiletter control sequences out of 65536+600000
  83 fonts using 6754911 bytes
  128i,16n,116p,1003b,1176s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans9-oblique.otf></opt
-/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-oblique.otf></opt/tex
+</opt/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-oblique.otf></op
+t/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans9-oblique.otf></opt/tex
 live/2025/texmf-dist/fonts/opentype/public/lm/lmsans9-regular.otf></opt/texlive/
 2025/texmf-dist/fonts/opentype/public/lm/lmsans8-oblique.otf></opt/texlive/2025/
 texmf-dist/fonts/opentype/public/lm/lmsans10-oblique.otf></opt/texlive/2025/texm
@@ -1424,21 +1424,27 @@ f-dist/fonts/opentype/public/lm/lmsans10-bold.otf></opt/texlive/2025/texmf-dist/
 fonts/opentype/public/lm/lmsans8-regular.otf></opt/texlive/2025/texmf-dist/fonts
 /opentype/public/lm/lmsans10-regular.otf></opt/texlive/2025/texmf-dist/fonts/ope
 ntype/public/lm/lmsans12-regular.otf></opt/texlive/2025/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi5.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pf
-b></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/t
-exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/texlive/20
-25/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/texlive/2025/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/texlive/2025/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr8.pfb></opt/texlive/2025/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr9.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y5.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on project.pdf (18 pages, 491454 bytes).
+ublic/amsfonts/cm/cmex10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/am
+sfonts/cmextra/cmex9.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi5.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/texl
+ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></opt/texlive/2025/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/texlive/2025/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/texlive/2025/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr5.pfb></opt/texlive/2025/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
+fb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/t
+exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></opt/texlive/2025/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/texlive/2025/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy9.pfb>
+Output written on project.pdf (18 pages, 536062 bytes).
 
-PDF statistics: 240 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
+PDF statistics: 264 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
  37 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -265,57 +265,186 @@
 		\textbf{Temperatura ustalona:} $T_\infty = T_a + PR_{th}$ \quad \textbf{Stała czasowa:} $\tau = R_{th}C_{th}$
 	\end{center}
 \end{frame}
+%
+%
+%
+%% Slajd: Rozwiązanie analityczne (wersja skrócona)
+%\begin{frame}
+%	\frametitle{Rozwiązanie analityczne równania}
+%	
+%	Równanie różniczkowe:
+%	\[
+%	\frac{d\theta}{dt} + \frac{1}{\tau}\theta = \frac{P}{C_{th}}, 
+%	\qquad \tau = R_{th}C_{th}
+%	\]
+%	
+%	Rozwiązanie:
+%	\[
+%	\theta(t) = P R_{th} + (\theta_0 - P R_{th}) e^{-t/\tau}
+%	\]
+%	
+%	Zależność między temperaturą a przyrostem:
+%	\[
+%	T(t) = T_a + \theta(t)
+%	\]
+%	
+%	Ostatecznie:
+%	\[
+%	T(t) = T_a + P R_{th} + (T_0 - T_a - P R_{th}) e^{-t/\tau}
+%	\]
+%\end{frame}
+%
+%
+%
+%% Slajd: Wnioski z rozwiązania
+%\begin{frame}
+%	\frametitle{Wnioski z rozwiązania}
+%	
+%	Temperatura ustalona silnika:
+%	\[
+%	T_\infty = T_a + P R_{th}
+%	\]
+%	
+%	Stała czasowa nagrzewania:
+%	\[
+%	\tau = R_{th} C_{th}
+%	\]
+%	
+%	\begin{itemize}
+%		\item Większa moc strat $P$ powoduje wzrost temperatury pracy silnika.
+%		\item Większe $R_{th}$ lub $C_{th}$ oznaczają wolniejsze nagrzewanie.
+%		\item Parametry $R_{th}$ i $C_{th}$ decydują o dynamice procesu cieplnego.
+%	\end{itemize}
+%\end{frame}
 
 
 
-% Slajd: Rozwiązanie analityczne (wersja skrócona)
+
+
+%% Slajd: Bilans energii termicznej
+%\begin{frame}
+%	\frametitle{Bilans energii termicznej}
+%	
+%	\begin{block}{Równanie bilansu cieplnego}
+%		\[
+%		\boxed{
+%			C_{th}\frac{dT(t)}{dt}
+%			=
+%			P - \frac{T(t) - T_a}{R_{th}}
+%		}
+%		\]
+%	\end{block}
+%	
+%	\vspace{-0.2cm}
+%	
+%	\begin{columns}[T]
+%		\begin{column}{0.45\textwidth}
+%			\begin{block}{Znaczenie składników}
+%				\small
+%				\begin{itemize}
+%					\item $C_{th}\dfrac{dT}{dt}$ – akumulacja energii cieplnej
+%					\item $P$ – moc strat (źródło ciepła)
+%					\item $\dfrac{T - T_a}{R_{th}}$ – oddawanie ciepła do otoczenia
+%				\end{itemize}
+%			\end{block}
+%		\end{column}
+%		
+%		\begin{column}{0.55\textwidth}
+%			\begin{alertblock}{Interpretacja fizyczna}
+%				\small
+%				\begin{itemize}
+%					\item im większe $P$ – tym szybsze nagrzewanie
+%					\item większe $R_{th}$ – słabsze chłodzenie
+%					\item równowaga: $\displaystyle T = T_a + P R_{th}$
+%					\item stała czasowa: $\displaystyle \tau = R_{th} C_{th}$
+%				\end{itemize}
+%			\end{alertblock}
+%		\end{column}
+%	\end{columns}
+%	
+%\end{frame}
+
+% Slajd: Uproszczenie zapisu równania
 \begin{frame}
-	\frametitle{Rozwiązanie analityczne równania}
+	\frametitle{Postać równania różniczkowego}
 	
-	Równanie różniczkowe:
-	\[
-	\frac{d\theta}{dt} + \frac{1}{\tau}\theta = \frac{P}{C_{th}}, 
-	\qquad \tau = R_{th}C_{th}
-	\]
+	\begin{block}{Przyrost temperatury}
+		W celu uproszczenia zapisu wprowadzamy przyrost temperatury
+		względem otoczenia:
+		\[
+		\theta(t) = T(t) - T_a
+		\]
+	\end{block}
 	
-	Rozwiązanie:
-	\[
-	\theta(t) = P R_{th} + (\theta_0 - P R_{th}) e^{-t/\tau}
-	\]
+	\vspace{0.2cm}
 	
-	Zależność między temperaturą a przyrostem:
-	\[
-	T(t) = T_a + \theta(t)
-	\]
+	\begin{block}{Równanie różniczkowe układu}
+		\[
+		\frac{d\theta(t)}{dt}
+		+
+		\frac{1}{R_{th} C_{th}} \, \theta(t)
+		=
+		\frac{P}{C_{th}}
+		\]
+	\end{block}
 	
-	Ostatecznie:
-	\[
-	T(t) = T_a + P R_{th} + (T_0 - T_a - P R_{th}) e^{-t/\tau}
-	\]
+	\vspace{0.1cm}
+	
+	\begin{center}
+		\small
+		\[
+		\tau = R_{th} C_{th}
+		\quad \Rightarrow \quad
+		\frac{d\theta}{dt} + \frac{1}{\tau}\theta = \frac{P}{C_{th}}
+		\]
+	\end{center}
+	
+\end{frame}
+
+% Slajd: Rozwiązanie analityczne
+\begin{frame}
+	\frametitle{Rozwiązanie analityczne}
+	
+	\begin{block}{Rozwiązanie równania}
+		Rozwiązaniem liniowego równania różniczkowego jest:
+		\[
+		\theta(t)
+		=
+		P R_{th}
+		+
+		\bigl(\theta_0 - P R_{th}\bigr)
+		e^{-t/\tau}
+		\]
+	\end{block}
+	
+	\vspace{0.2cm}
+	
+	\begin{block}{Powrót do temperatury silnika}
+		\[
+		T(t) = T_a + \theta(t)
+		\]
+	\end{block}
+	
+	\vspace{0.1cm}
+	
+	\begin{center}
+		\small
+		\[
+		\boxed{
+			T(t)
+			=
+			T_a + P R_{th}
+			+
+			\bigl(T_0 - T_a - P R_{th}\bigr)
+			e^{-t/\tau}
+		}
+		\]
+	\end{center}
+	
 \end{frame}
 
 
 
-% Slajd: Wnioski z rozwiązania
-\begin{frame}
-	\frametitle{Wnioski z rozwiązania}
-	
-	Temperatura ustalona silnika:
-	\[
-	T_\infty = T_a + P R_{th}
-	\]
-	
-	Stała czasowa nagrzewania:
-	\[
-	\tau = R_{th} C_{th}
-	\]
-	
-	\begin{itemize}
-		\item Większa moc strat $P$ powoduje wzrost temperatury pracy silnika.
-		\item Większe $R_{th}$ lub $C_{th}$ oznaczają wolniejsze nagrzewanie.
-		\item Parametry $R_{th}$ i $C_{th}$ decydują o dynamice procesu cieplnego.
-	\end{itemize}
-\end{frame}
 
 
 
