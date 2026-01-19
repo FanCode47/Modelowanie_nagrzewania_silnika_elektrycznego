@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.12.30)  19 JAN 2026 07:31
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.12.30)  19 JAN 2026 10:15
  restricted system commands enabled.
 **project.tex
 (./project.tex
@@ -1405,14 +1405,14 @@ Package rerunfilecheck Info: File `project.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 49546 strings out of 476081
+ 49544 strings out of 476081
  125240,1977958 words of node,token memory allocated
  3508 words of node memory still in use:
    40 hlist, 12 vlist, 4 rule, 24 disc, 8 local_par, 78 glue, 21 kern, 19 penalt
 y, 1 margin_kern, 122 glyph, 205 attribute, 62 glue_spec, 104 attribute_list, 4 
 write, 30 pdf_colorstack nodes
    avail lists: 2:4027,3:1407,4:657,5:438,6:121,7:3945,8:31,9:1124,10:12,11:504
- 70935 multiletter control sequences out of 65536+600000
+ 70933 multiletter control sequences out of 65536+600000
  83 fonts using 6754911 bytes
  128i,16n,116p,1003b,1176s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-oblique.otf></op
@@ -1441,7 +1441,7 @@ exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/texlive/2
 -dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/texlive/2025/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy9.pfb>
-Output written on project.pdf (18 pages, 536062 bytes).
+Output written on project.pdf (18 pages, 536640 bytes).
 
 PDF statistics: 264 PDF objects out of 1000 (max. 8388607)
  178 compressed objects within 2 object streams
